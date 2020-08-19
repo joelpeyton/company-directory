@@ -12,8 +12,9 @@ function readAll() {
         return response.json();
     })
     .then(jsonResponse => {
-        const employees = jsonResponse.data;
-            
+        removeCards();
+
+        const employees = jsonResponse.data;    
         for (let i = 0; i < employees.length; i++ ) {
             createCard(employees[i]);
         }
@@ -66,4 +67,19 @@ function createCard(employee) {
     employees.appendChild(column);
 }
 
+function removeCards() {
+    let employees = document.getElementById("employees");
+    
+    if (employees) {
+        employees.remove();
+        const directory = document.getElementById("directory");
+        employees = document.createElement("div");
+        employees.className = "row";
+        employees.id = "employees"; 
+        directory.appendChild(employees);
+    }
+}
+
 readAll();
+
+export { readAll };

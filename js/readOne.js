@@ -1,3 +1,6 @@
+import { update } from "./update.js";
+import { renderPage } from "./helper.js";
+
 function readOne(id) {
     fetch("php/readOne.php?id=" + id)
     .then(response => {
@@ -8,8 +11,10 @@ function readOne(id) {
         return response.json();
     })
     .then(jsonResponse => {
-        renderPage("employee");
         const employee = jsonResponse.data[0];
+        renderPage("employee");
+        cancelBtn();
+        updateBtn(employee.id);
         displayEmployee(employee); 
     })
     .catch(error => {
@@ -27,29 +32,17 @@ function displayEmployee(employee) {
     document.getElementById("employeeEmail").value = employee.email;
 }
 
-function renderPage(page) {
-    cancelBtn();
-    const directory = document.getElementById("directory");
-    const employee = document.getElementById("employee");
-    const container = document.querySelector(".container-fluid");
-
-    if (page == "employee") {
-        directory.style.display = "none";
-        employee.style.display = "block";
-        container.style.paddingLeft = "0px";
-        container.style.paddingRight = "0px";
-    } else {
-        directory.style.display = "block";
-        employee.style.display = "none";
-        container.style.paddingLeft = "15px";
-        container.style.paddingRight = "15px";
+function cancelBtn() {
+    const cancelBtn = document.getElementById("cancelBtn");
+    cancelBtn.onclick = function() {
+        renderPage("directory");
     }
 }
 
-function cancelBtn() {
-    const cancel = document.getElementById("cancelBtn");
-    cancel.onclick = function() {
-        renderPage("directory");
+function updateBtn(id) {
+    const updateBtn = document.getElementById("updateBtn");
+    updateBtn.onclick = function() {
+        update(id);
     }
 }
 

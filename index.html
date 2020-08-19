@@ -31,93 +31,93 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div  id="directory">
-            <div class="row sticky-top">
-                <!-- Title -->
-                <div id="title" class="col-sm-12">
-                    <h1>Company Directory</h1>
-                </div>
+            <div id="directory">
+                <div class="row sticky-top">
+                    <!-- Title -->
+                    <div id="title" class="col-sm-12">
+                        <h1>Company Directory</h1>
+                    </div>
 
-                <!-- Search Bar-->
-                <div id="searchBar" class="col-sm-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search employees" aria-label="Search employess" aria-describedby="searchBtns">
-                        <div class="input-group-append" id="searchBtns">
-                            <button id="search" class="btn btn-secondary" type="button">Search</button>
-                            <button id="filter" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">All</a>
-                                <a class="dropdown-item" href="#">Department</a>
-                                <a class="dropdown-item" href="#">employeeLocation</a>
+                    <!-- Search Bar-->
+                    <div id="searchBar" class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search employees" aria-label="Search employess" aria-describedby="searchBtns">
+                            <div class="input-group-append" id="searchBtns">
+                                <button id="search" class="btn btn-secondary" type="button">Search</button>
+                                <button id="filter" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">All</a>
+                                    <a class="dropdown-item" href="#">Department</a>
+                                    <a class="dropdown-item" href="#">employeeLocation</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Employees -->
-            <div class="row" id="employees">
-                <!-- Read all employees -->
+                <!-- Employees -->
+                <div class="row" id="employees">
+                    <!-- Read all employees -->
+                </div>
             </div>
-        </div>
-        <!-- Edit Employee -->
-        <div class="card" id="employee">
-            <div class="card-header">
-                <h5>Edit Employee</h5>
+            <!-- Edit Employee -->
+            <div class="card" id="employee">
+                <div class="card-header">
+                    <h5>Edit Employee</h5>
+                </div>
+                <div class="card-body">
+                    <form id="employeeForm">
+                        <div class="form-group">
+                            <label for="employeeFirstName">First Name</label>
+                            <input type="text" class="form-control" id="employeeFirstName" name="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeLastName">Last Name</label>
+                            <input type="text" class="form-control" id="employeeLastName" name="lastName">
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeJobTitle">Job Title</label>
+                            <input type="text" class="form-control" id="employeeJobTitle" name="jobTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeDepartment">Department</label>
+                            <select class="custom-select" id="employeeDepartment" name="deptID" aria-label="Search by department">
+                                <option selected>Search by department</option>
+                                <option value="1">Human Resources</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Marketing</option>
+                                <option value="4">Legal</option>
+                                <option value="5">Services</option>
+                                <option value="6">Research and Development</option>
+                                <option value="7">Product Management</option>
+                                <option value="8">Training</option>
+                                <option value="9">Support</option>
+                                <option value="10">Engineering</option>
+                                <option value="11">Accounting</option>
+                                <option value="12">Business Development</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeLocation">Location</label>
+                            <select class="custom-select" id="employeeLocation" name="location" aria-label="Search by location">
+                                <option selected>Search by location</option>
+                                <option value="1">London</option>
+                                <option value="2">New York</option>
+                                <option value="3">Paris</option>
+                                <option value="4">Munich</option>
+                                <option value="5">Rome</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeEmail">Email</label>
+                            <input type="email" class="form-control" id="employeeEmail" name="email">
+                        </div>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" id="updateBtn" class="btn btn-primary">Update</button>
+                        <button type="button" id="deleteBtn" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="employeeFirstName">First Name</label>
-                        <input type="text" class="form-control" id="employeeFirstName" name="firstName">
-                    </div>
-                    <div class="form-group">
-                        <label for="employeeLastName">Last Name</label>
-                        <input type="text" class="form-control" id="employeeLastName" name="lastName">
-                    </div>
-                    <div class="form-group">
-                        <label for="employeeJobTitle">Job Title</label>
-                        <input type="text" class="form-control" id="employeeJobTitle" name="jobTitle">
-                    </div>
-                    <div class="form-group">
-                        <label for="employeeDepartment">Department</label>
-                        <select class="custom-select" id="employeeDepartment" name="deptID" aria-label="Search by department">
-                            <option selected>Search by department</option>
-                            <option value="1">Human Resources</option>
-                            <option value="2">Sales</option>
-                            <option value="3">Marketing</option>
-                            <option value="4">Legal</option>
-                            <option value="5">Services</option>
-                            <option value="6">Research and Development</option>
-                            <option value="7">Product Management</option>
-                            <option value="8">Training</option>
-                            <option value="9">Support</option>
-                            <option value="10">Engineering</option>
-                            <option value="11">Accounting</option>
-                            <option value="12">Business Development</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="employeeLocation">Location</label>
-                        <select class="custom-select" id="employeeLocation" name="location" aria-label="Search by location">
-                            <option selected>Search by location</option>
-                            <option value="1">London</option>
-                            <option value="2">New York</option>
-                            <option value="3">Paris</option>
-                            <option value="4">Munich</option>
-                            <option value="5">Rome</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="employeeEmail">Email</label>
-                        <input type="email" class="form-control" id="employeeEmail" name="email">
-                    </div>
-                    <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
-                    <button type="button" id="updateBtn" class="btn btn-primary">Update</button>
-                    <button type="button" id="deleteBtn" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-        </div>
         </div> <!-- End of container-->
 
     <!-- Bootstrap JavaScript -->
