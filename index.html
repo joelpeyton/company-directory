@@ -31,7 +31,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            
+            <div  id="directory">
             <div class="row sticky-top">
                 <!-- Title -->
                 <div id="title" class="col-sm-12">
@@ -58,13 +58,12 @@
             <!-- Employees -->
             <div class="row" id="employees">
                 <!-- Read all employees -->
-            
-        </div> <!-- End of container -->
-
+            </div>
+        </div>
         <!-- Edit Employee -->
         <div class="card" id="employee">
             <div class="card-header">
-                <span>Edit Employee</span>
+                <h5>Edit Employee</h5>
             </div>
             <div class="card-body">
                 <form>
@@ -113,12 +112,13 @@
                         <label for="employeeEmail">Email</label>
                         <input type="email" class="form-control" id="employeeEmail" name="email">
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
                     <button type="button" class="btn btn-primary">Update</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </form>
             </div>
         </div>
+        </div> <!-- End of container-->
 
     <!-- Bootstrap JavaScript -->
     <!-- Optional JavaScript -->
