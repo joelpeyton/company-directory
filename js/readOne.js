@@ -1,5 +1,6 @@
 import { update } from "./update.js";
 import { renderPage } from "./helper.js";
+import { deleteEmployee } from "./delete.js";
 
 function readOne(id) {
     fetch("php/readOne.php?id=" + id)
@@ -15,6 +16,7 @@ function readOne(id) {
         renderPage("employee");
         cancelBtn();
         updateBtn(employee.id);
+        deleteBtn(employee.id);
         displayEmployee(employee); 
     })
     .catch(error => {
@@ -43,6 +45,13 @@ function updateBtn(id) {
     const updateBtn = document.getElementById("updateBtn");
     updateBtn.onclick = function() {
         update(id);
+    }
+}
+
+function deleteBtn(id) {
+    const deleteBtn = document.getElementById("deleteBtn");
+    deleteBtn.onclick = function() {
+        deleteEmployee(id);
     }
 }
 

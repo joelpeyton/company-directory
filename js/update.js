@@ -12,6 +12,10 @@ function update(id) {
             body: formData
         })
         .then(response => {
+            if (!response.ok) {
+                //displayAlert("Error", "directory", 7);
+                throw new Error("Network response was not ok");
+            }
             return response.json();
         })
         .then(jsonResponse => {
