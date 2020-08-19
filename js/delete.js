@@ -2,7 +2,7 @@ import { renderPage } from "./helper.js";
 import { readAll } from "./readAll.js";
 
 function deleteEmployee(id) {
-    fetch("php/delete.php?id=")
+    fetch("php/delete.php?id=" + id)
     .then(response => {
         if (!response.ok) {
             //displayAlert("Error", "directory", 7);

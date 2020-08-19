@@ -43,18 +43,19 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search employees" aria-label="Search employess" aria-describedby="searchBtns">
                             <div class="input-group-append" id="searchBtns">
-                                <button id="search" class="btn btn-secondary" type="button">Search</button>
-                                <button id="filter" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                                <button id="searchBtn" class="btn btn-secondary" type="button">Search</button>
+                                <button id="filterBtn" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                                <button id="createBtn" class="btn btn-success" type="button"><i class="fas fa-user-plus"></i></button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">All</a>
                                     <a class="dropdown-item" href="#">Department</a>
-                                    <a class="dropdown-item" href="#">employeeLocation</a>
+                                    <a class="dropdown-item" href="#">Location</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Employees -->
                 <div class="row" id="employees">
                     <!-- Read all employees -->
@@ -63,7 +64,7 @@
             <!-- Edit Employee -->
             <div class="card" id="employee">
                 <div class="card-header">
-                    <h5>Edit Employee</h5>
+                    <h5><span id="employeeTitle"></span>Employee</h5>
                 </div>
                 <div class="card-body">
                     <form id="employeeForm">
@@ -82,7 +83,7 @@
                         <div class="form-group">
                             <label for="employeeDepartment">Department</label>
                             <select class="custom-select" id="employeeDepartment" name="deptID" aria-label="Search by department">
-                                <option selected>Search by department</option>
+                                <!--<option selected>Search by department</option>-->
                                 <option value="1">Human Resources</option>
                                 <option value="2">Sales</option>
                                 <option value="3">Marketing</option>
@@ -98,23 +99,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="employeeLocation">Location</label>
-                            <select class="custom-select" id="employeeLocation" name="location" aria-label="Search by location">
-                                <option selected>Search by location</option>
-                                <option value="1">London</option>
-                                <option value="2">New York</option>
-                                <option value="3">Paris</option>
-                                <option value="4">Munich</option>
-                                <option value="5">Rome</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="employeeEmail">Email</label>
                             <input type="email" class="form-control" id="employeeEmail" name="email">
                         </div>
                         <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
                         <button type="submit" id="updateBtn" class="btn btn-primary">Update</button>
                         <button type="button" id="deleteBtn" class="btn btn-danger">Delete</button>
+                        <button type="submit" id="addBtn" class="btn btn-success">Add</button>
                     </form>
                 </div>
             </div>
@@ -126,7 +117,7 @@
     <script src="../jQuery/jquery-3.5.1.min.js"></script>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="js/readAll.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
     
     </body>
 </html>

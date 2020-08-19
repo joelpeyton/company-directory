@@ -1,5 +1,5 @@
 #title {
-    background-color: #27ae60; 
+    background-color: #28a745; 
     color:white;
     text-align: center;
 }
@@ -12,6 +12,7 @@ h1 {
 
 h5 {
     margin-top: 5px;
+    font-size: 1rem;
 }
 
 #searchBar {
@@ -29,7 +30,8 @@ h5 {
 #searchBar button, 
 .card, 
 .card button,
-.custom-select {
+.custom-select,
+.form-control {
     font-size: 0.875rem;
 }
 
@@ -48,8 +50,6 @@ h5 {
     margin: 0;
     display: none;
 }
-
-
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -79,11 +79,16 @@ h5 {
         font-size: 2.5rem;
     }
 
+    h5 {
+        font-size: 1.25rem;
+    }
+
     #searchBar input, 
     #searchBar button, 
     .card, 
     .card button,
-    .custom-select {
+    .custom-select,
+    .form-control {
         font-size: 1rem;
     }
 } 

@@ -1,6 +1,5 @@
-import { update } from "./update.js";
 import { renderPage } from "./helper.js";
-import { deleteEmployee } from "./delete.js";
+
 
 function readOne(id) {
     fetch("php/readOne.php?id=" + id)
@@ -13,10 +12,7 @@ function readOne(id) {
     })
     .then(jsonResponse => {
         const employee = jsonResponse.data[0];
-        renderPage("employee");
-        cancelBtn();
-        updateBtn(employee.id);
-        deleteBtn(employee.id);
+        renderPage("edit", employee);
         displayEmployee(employee); 
     })
     .catch(error => {
@@ -30,29 +26,7 @@ function displayEmployee(employee) {
     document.getElementById("employeeLastName").value = employee.lastName;
     document.getElementById("employeeJobTitle").value = employee.jobTitle;
     document.getElementById("employeeDepartment").value = employee.departmentID;
-    document.getElementById("employeeLocation").value = employee.locationID;
     document.getElementById("employeeEmail").value = employee.email;
-}
-
-function cancelBtn() {
-    const cancelBtn = document.getElementById("cancelBtn");
-    cancelBtn.onclick = function() {
-        renderPage("directory");
-    }
-}
-
-function updateBtn(id) {
-    const updateBtn = document.getElementById("updateBtn");
-    updateBtn.onclick = function() {
-        update(id);
-    }
-}
-
-function deleteBtn(id) {
-    const deleteBtn = document.getElementById("deleteBtn");
-    deleteBtn.onclick = function() {
-        deleteEmployee(id);
-    }
 }
 
 export { readOne };

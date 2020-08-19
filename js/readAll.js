@@ -80,6 +80,4 @@ function removeCards() {
     }
 }
 
-readAll();
-
 export { readAll };
