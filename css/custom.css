@@ -81,7 +81,9 @@ h5 {
 
     #searchBar input, 
     #searchBar button, 
-    .card {
+    .card, 
+    .card button,
+    .custom-select {
         font-size: 1rem;
     }
 } 

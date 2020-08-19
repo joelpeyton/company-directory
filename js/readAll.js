@@ -1,4 +1,4 @@
-//import { displayAlert, createTableData } from "./helper.js";
+import { readOne } from "./readOne.js";
 
 // calls php/readAll.php
 // returns ALL EMPLOYEES and displays employee cards
@@ -12,18 +12,11 @@ function readAll() {
         return response.json();
     })
     .then(jsonResponse => {
-        if (jsonResponse.status.code == "200") {
-            const employees = jsonResponse.data;
+        const employees = jsonResponse.data;
             
-            for (let i = 0; i < employees.length; i++ ) {
-                createCard(employees[i]);
-            }
-            
-            //displayAlert("Success", "results", 9, employees.length);
-        } 
-        else {
-            //displayAlert("Error", "directory", 7);
-        }  
+        for (let i = 0; i < employees.length; i++ ) {
+            createCard(employees[i]);
+        }
     })
     .catch(error => {
         //displayAlert("Error", "directory", 7);
@@ -57,13 +50,7 @@ function createCard(employee) {
     button.className = "btn btn-secondary";
     button.innerText = "Edit";
     button.onclick = function() {
-        const directory = document.getElementById("directory");
-        directory.style.display = "none";
-        const employee = document.getElementById("employee");
-        employee.style.display = "block";
-        const container = document.querySelector(".container-fluid");
-        container.style.paddingLeft = "0px";
-        container.style.paddingRight = "0px";
+        readOne(employee.id);
     }
 
     cardBody.className = "card-body";
