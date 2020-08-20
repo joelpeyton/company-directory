@@ -40,19 +40,50 @@
 
                     <!-- Search Bar-->
                     <div id="searchBar" class="col-sm-12">
+                        
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search employees" aria-label="Search employess" aria-describedby="searchBtns">
-                            <div class="input-group-append" id="searchBtns">
-                                <button id="searchBtn" class="btn btn-secondary" type="button">Search</button>
-                                <button id="filterBtn" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-                                <button id="createBtn" class="btn btn-success" type="button"><i class="fas fa-user-plus"></i></button>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Search by</span>
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">All</a>
-                                    <a class="dropdown-item" href="#">Department</a>
-                                    <a class="dropdown-item" href="#">Location</a>
+                                    <button id="searchNameBtn" class="dropdown-item">Name</button>
+                                    <button id="searchDepartmentBtn" class="dropdown-item">Department</button>
+                                    <button id="searchLocationBtn" class="dropdown-item">Location</button>
                                 </div>
                             </div>
+                            
+                            <input type="text" class="form-control" id="searchName" placeholder="Last name">
+                            <select class="custom-select" id="searchDepartment" aria-label="Search by department">
+                                <option value="0" selected>Department</option>
+                                <option value="1">Human Resources</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Marketing</option>
+                                <option value="4">Legal</option>
+                                <option value="5">Services</option>
+                                <option value="6">Research and Development</option>
+                                <option value="7">Product Management</option>
+                                <option value="8">Training</option>
+                                <option value="9">Support</option>
+                                <option value="10">Engineering</option>
+                                <option value="11">Accounting</option>
+                                <option value="12">Business Development</option>
+                            </select>
+                            <select class="custom-select" id="searchLocation" aria-label="Search by location">
+                                <option value="0" selected>Location</option>
+                                <option value="1">London</option>
+                                <option value="2">New York</option>
+                                <option value="3">Paris</option>
+                                <option value="4">Munich</option>
+                                <option value="5">Rome</option>
+                            </select>
+                            
+                            <div class="input-group-append">
+                                <button id="createBtn" class="btn btn-success" type="button"><i class="fas fa-user-plus"></i></button>
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
                 
@@ -60,8 +91,9 @@
                 <div class="row" id="employees">
                     <!-- Read all employees -->
                 </div>
-            </div>
-            <!-- Edit Employee -->
+            </div> <!-- End of directory-->
+
+            <!-- Create / Read / Update / Delete / Employee -->
             <div class="card" id="employee">
                 <div class="card-header">
                     <h5><span id="employeeTitle"></span>Employee</h5>
