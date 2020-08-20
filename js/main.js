@@ -1,5 +1,5 @@
 import { readAll } from "./readAll.js";
-import { createCard, removeCards, renderPage } from "./helper.js";
+import { createCard, removeCards, renderPage, showAlert } from "./helper.js";
 
 readAll();
 btnEvents();
@@ -52,21 +52,18 @@ function nameSearch() {
         fetch("php/search.php?lastName=" + event.target.value)
         .then(response => {
             if (!response.ok) {
-                //displayAlert("Error", "directory", 7);
                 throw new Error("Network response was not ok");
             }
             return response.json();
         })
         .then(jsonResponse => {
             removeCards();
-
             const employees = jsonResponse.data;    
             for (let i = 0; i < employees.length; i++ ) {
                 createCard(employees[i]);
             }
         })
         .catch(error => {
-            //displayAlert("Error", "employee", 7);
             console.error("There has been a problem with your fetch operation:", error);
         });
     };
@@ -80,21 +77,18 @@ function deptSearch() {
         fetch("php/search.php?deptID=" + event.target.value)
         .then(response => {
             if (!response.ok) {
-                //displayAlert("Error", "directory", 7);
                 throw new Error("Network response was not ok");
             }
             return response.json();
         })
         .then(jsonResponse => {
             removeCards();
-
             const employees = jsonResponse.data;    
             for (let i = 0; i < employees.length; i++ ) {
                 createCard(employees[i]);
             }
         })
         .catch(error => {
-            //displayAlert("Error", "employee", 7);
             console.error("There has been a problem with your fetch operation:", error);
         });
     };
@@ -108,21 +102,18 @@ function locationSearch() {
         fetch("php/search.php?location=" + event.target.value)
         .then(response => {
             if (!response.ok) {
-                //displayAlert("Error", "directory", 7);
                 throw new Error("Network response was not ok");
             }
             return response.json();
         })
         .then(jsonResponse => {
             removeCards();
-
             const employees = jsonResponse.data;    
             for (let i = 0; i < employees.length; i++ ) {
                 createCard(employees[i]);
             }
         })
         .catch(error => {
-            //displayAlert("Error", "employee", 7);
             console.error("There has been a problem with your fetch operation:", error);
         });
     };

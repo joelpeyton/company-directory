@@ -138,4 +138,44 @@ function clearForm() {
     });
 }
 
-export { createCard, removeCards, renderPage, clearForm };
+function showAlert(alertType, code, size) {
+    const alert = document.querySelector(".alert");
+    alert.style.display = "block";
+    
+    alertType == "success" ? alert.classList.add("alert-success") : alert.classList.add("alert-danger");
+
+    switch (code) {
+        case 1: 
+            alert.innerText = "Employee successfully added.";
+            break;
+        case 2:
+            alert.innerText = "Unable to add employee to database.";
+            break;
+        case 3:
+            alert.innerText = "Employee successfully updated.";
+            break;
+        case 4:
+            alert.innerText = "Unable to update employee.";
+            break;
+        case 5:
+            alert.innerText = "Employee successfully deleted.";
+            break;
+        case 6:
+            alert.innerText = "Unable to delete employee.";
+            break;
+        case 7:
+            alert.innerText = "Unable to access database.";
+            break;
+        case 8:
+            alert.innerText = "No search results found.";
+            break;
+        case 9:
+            alert.innerText = "Number of results found: " + size;
+            break;
+    }
+
+    setTimeout(function() {
+        alert.style.display = "none";
+    }, 5000);
+}
+export { createCard, removeCards, renderPage, clearForm, showAlert };

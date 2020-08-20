@@ -1,4 +1,4 @@
-import { renderPage, clearForm} from "./helper.js";
+import { renderPage, clearForm, showAlert } from "./helper.js";
 import { readAll } from "./readAll.js";
 
 function create(id) {
@@ -13,16 +13,17 @@ function create(id) {
         })
         .then(response => {
             if (!response.ok) {
-                //displayAlert("Error", "directory", 7);
                 throw new Error("Network response was not ok");
             }
             return response.json();
         })
-        .then(jsonResponse => {
+        .then( () => {
             clearForm();
+            renderPage("directory");
+            readAll();
+            showAlert("success", 1);
         })
         .catch(error => {
-            //displayAlert("Error", "employee", 7);
             console.error("There has been a problem with your fetch operation:", error);
         });
     };

@@ -5,7 +5,6 @@ function readOne(id) {
     fetch("php/readOne.php?id=" + id)
     .then(response => {
         if (!response.ok) {
-            //displayAlert("Error", "directory", 7);
             throw new Error("Network response was not ok");
         }
         return response.json();
@@ -16,7 +15,6 @@ function readOne(id) {
         displayEmployee(employee); 
     })
     .catch(error => {
-        //displayAlert("Error", "employee", 7);
         console.error("There has been a problem with your fetch operation:", error);
     });
 }
