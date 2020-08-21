@@ -1,4 +1,4 @@
-import { createCard, removeCards, showAlert } from "./helper.js";
+import { createCard, removeCards } from "./helper.js";
 
 // calls php/readAll.php
 // returns ALL EMPLOYEES and displays employee cards

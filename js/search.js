@@ -1,4 +1,4 @@
-import { createCard, removeCards, renderPage } from "./helper.js";
+import { createCard, removeCards } from "./helper.js";
 
 function searchEvents() {
     const searchNameBtn = document.getElementById("searchNameBtn");

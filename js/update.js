@@ -1,5 +1,4 @@
 import { renderPage, showAlert } from "./helper.js";
-import { readAll } from "./readAll.js";
 
 function update(id) {
     const updateForm = document.getElementById("employeeForm");
@@ -21,7 +20,6 @@ function update(id) {
             })
             .then( () => {
                 renderPage("directory");
-                readAll();
                 showAlert("success", 3);
             })
             .catch(error => {
@@ -32,7 +30,6 @@ function update(id) {
         const noBtn = document.getElementById("noBtn");
         noBtn.onclick = function() {
             renderPage("directory");
-            readAll();
             showAlert("error", 4);
         }
     };

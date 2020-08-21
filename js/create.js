@@ -1,5 +1,4 @@
 import { renderPage, clearForm, showAlert } from "./helper.js";
-import { readAll } from "./readAll.js";
 
 function create() {
     const createForm = document.getElementById("employeeForm");
@@ -22,7 +21,6 @@ function create() {
             .then( () => {
                 clearForm();
                 renderPage("directory");
-                readAll();
                 showAlert("success", 1);
             })
             .catch(error => {
@@ -33,7 +31,6 @@ function create() {
         const noBtn = document.getElementById("noBtn");
         noBtn.onclick = function() {
             renderPage("directory");
-            readAll();
             showAlert("error", 2);
         }
     };

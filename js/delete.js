@@ -1,5 +1,4 @@
 import { renderPage, showAlert } from "./helper.js";
-import { readAll } from "./readAll.js";
 
 function deleteEmployee(id) {
     const yesBtn = document.getElementById("yesBtn");
@@ -13,7 +12,6 @@ function deleteEmployee(id) {
         })
         .then( () => {
             renderPage("directory");
-            readAll();
             showAlert("success", 5);
         })
         .catch(error => {
@@ -24,7 +22,6 @@ function deleteEmployee(id) {
     const noBtn = document.getElementById("noBtn");
     noBtn.onclick = function() {
         renderPage("directory");
-        readAll();
         showAlert("error", 6);
     }
 }

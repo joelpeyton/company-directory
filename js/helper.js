@@ -1,8 +1,9 @@
 import { create } from "./create.js"; 
 import { update } from "./update.js";
 import { deleteEmployee } from "./delete.js";
-import { readAll } from "./readAll.js";
 import { readOne } from "./readOne.js"; 
+import { getDepts } from "./structure.js";
+import { readAll } from "./readAll.js";
 
 function createCard(employee) {
     const employees = document.querySelector("#employees");
@@ -60,34 +61,48 @@ function removeCards() {
 }
 
 function renderPage(page, employee) {
+    const structure = document.getElementById("structure");
     const directory = document.getElementById("directory");
     const employeeForm = document.getElementById("employee");
     const container = document.querySelector(".container-fluid");
     const employeeTitle = document.getElementById("employeeTitle");
+    const structureBtn = document.getElementById("structureBtn");
 
-    if (page == "edit" || page == "add") {
+    if (page == "edit") {
+        displayEditAdd();
+        employeeTitle.innerText = "Edit "; 
+        removeBtns();
+        cancelBtn();
+        updateBtn(employee.id);
+        deleteBtn(employee.id);
+    } else if (page == "add") {
+        displayEditAdd();
+        employeeTitle.innerText = "Add "; 
+        clearForm();
+        removeBtns();
+        cancelBtn();
+        addBtn();
+    } else { 
+        directory.style.display = "block";
+        container.style.paddingLeft = "15px";
+        container.style.paddingRight = "15px";
+
+        if (structureBtn.classList.contains("active")) {
+            structure.style.display = "block";
+            employeeForm.style.display = "none";
+            getDepts();
+        } else {
+            structure.style.display = "none";
+            employeeForm.style.display = "none";
+            readAll();
+        }
+    } 
+
+    function displayEditAdd() {
         directory.style.display = "none";
         employeeForm.style.display = "block";
         container.style.paddingLeft = "0px";
         container.style.paddingRight = "0px";
-        removeBtns();
-    } else {
-        directory.style.display = "block";
-        employeeForm.style.display = "none";
-        container.style.paddingLeft = "15px";
-        container.style.paddingRight = "15px";
-    }
-
-    if (page == "edit") {
-        employeeTitle.innerText = "Edit "; 
-        cancelBtn();
-        updateBtn(employee.id);
-        deleteBtn(employee.id);
-    } else {
-        employeeTitle.innerText = "Add "; 
-        clearForm();
-        cancelBtn();
-        addBtn();
     }
 }
 
@@ -96,7 +111,6 @@ function cancelBtn() {
     cancelBtn.style.display = "inline-block";
     cancelBtn.onclick = function() {
         renderPage("directory");
-        readAll();
     }
 }
 
@@ -141,6 +155,28 @@ function clearForm() {
     });
 }
 
+function resetSearchBy() {
+    const forms = ["Name", "Department", "Location"];
+    
+    forms.forEach(formId => {
+        const form = document.getElementById("search" + formId);
+        if (formId == "Name") {
+            form.style.display = "block";
+            form.value = "";
+        } else {
+            form.style.display = "none";
+            form.value = 0;
+        }
+    })
+}
+
+function hideEmployeesList() {
+    const employeeCollection = document.getElementsByClassName("employeeStructure");
+    for (let i = 0; i < employeeCollection.length; i++) {
+        employeeCollection[i].style.display = "none";
+    }
+}
+
 function showAlert(alertType, code, size) {
     const alert = document.querySelector(".alert");
     alert.style.display = "block";
@@ -182,4 +218,4 @@ function showAlert(alertType, code, size) {
         alert.style.display = "none";
     }, 5000);
 }
-export { createCard, removeCards, renderPage, clearForm, showAlert };
+export { createCard, removeCards, renderPage, clearForm, resetSearchBy, hideEmployeesList, showAlert };

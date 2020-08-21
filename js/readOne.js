@@ -1,5 +1,4 @@
 import { renderPage } from "./helper.js";
-import { update } from "./update.js";
  
 function readOne(id) {
     fetch("php/readOne.php?id=" + id)

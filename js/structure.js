@@ -1,7 +1,18 @@
+import { hideEmployeesList } from "./helper.js";
+
 function getDepts() {
+    
+    const employeeCollection = document.getElementsByClassName("employeeStructure");
+    if (employeeCollection.length > 0) {
+        for (let i = employeeCollection.length - 1; i >= 0; i--) {
+            employeeCollection[i].remove();
+        }
+    }
+    
     for (let i = 1; i <= 12; i++) {
         getDept(i);
     }
+    
 }
 
 function getDept(id) {
@@ -26,26 +37,23 @@ function getDept(id) {
 
 function createStructure(name, id) {
     const dept = document.getElementById(id);
-    
-    const div = document.createElement("div");
-    div.className = "col-8 offset-3";
 
     const employee = document.createElement("div");
-    employee.className = "structure structure-employee";
-    employee.innerHTML = `<h5>${name}</h5>`;
+    employee.className = "employeeStructure col-8 offset-3";
+
+    const employeeName = document.createElement("div");
+    employeeName.className = "structure structure-employee";
+    employeeName.innerHTML = `<span>${name}</span>`;
     
-    div.appendChild(employee);
-    dept.appendChild(div);
+    employee.appendChild(employeeName);
 
     const space = document.createElement("div");
     space.className = "col-1";
-    dept.appendChild(space);
+    employee.appendChild(space);
 
-    let deptCollection = dept.children;
-        for (let i = 1; i < deptCollection.length; i++) {
-            let child = deptCollection[i];
-            child.style.display = "none";
-        }
+    dept.appendChild(employee);
+
+    hideEmployeesList();
 }
 
 function toggleLocations(ids) {
