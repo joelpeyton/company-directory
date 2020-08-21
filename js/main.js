@@ -1,121 +1,48 @@
-import { readAll } from "./readAll.js";
-import { createCard, removeCards, renderPage, showAlert } from "./helper.js";
+import { getDepts, structureEvents } from "./structure.js"; 
+import { nameSearch, deptSearch, locationSearch, searchEvents } from "./search.js";
+import { renderPage } from "./helper.js";
 
-readAll();
-btnEvents();
+// menu
+menuEvents();
+
+// structure
+getDepts();
+structureEvents();
+
+// search
+searchEvents();
 nameSearch();
 deptSearch();
-locationSearch();
+locationSearch();  
 
-function btnEvents() {
+// local functions
+function menuEvents() {
+    const structureBtn = document.getElementById("structureBtn");
+    const searchBtn = document.getElementById("searchBtn");
     const createBtn = document.getElementById("createBtn");
+
+    structureBtn.onclick = function() {
+        if (!structureBtn.classList.contains("active")) {
+            document.getElementById("structure").style.display = "block";
+            document.getElementById("searchBar").style.display = "none";
+            document.getElementById("employees").style.display = "none";
+            structureBtn.classList.add("active");
+            searchBtn.classList.remove("active");
+        }
+    }
+
+    searchBtn.onclick = function() {
+        if (!searchBtn.classList.contains("active")) {
+            document.getElementById("searchBar").style.display = "block";
+            document.getElementById("structure").style.display = "none";
+            searchBtn.classList.add("active");
+            structureBtn.classList.remove("active");
+        }
+    }
+
     createBtn.onclick = function() {
+        document.getElementById("structure").style.display = "none";
         renderPage("add");
     };
 
-    const searchNameBtn = document.getElementById("searchNameBtn");
-    searchNameBtn.onclick = function(event) {
-        searchBy(event);
-    };
-
-    const searchDeptBtn = document.getElementById("searchDepartmentBtn");
-    searchDeptBtn.onclick = function(event) {
-        searchBy(event);
-    };
-
-    const searchLocationBtn = document.getElementById("searchLocationBtn");
-    searchLocationBtn.onclick = function(event) {
-        searchBy(event);
-    };
 }
-
-function searchBy(event) {
-    const btnId = event.target.id.slice(6, -3);
-    const forms = ["Name", "Department", "Location"];
-    
-    forms.forEach(formId => {
-        const form = document.getElementById("search" + formId);
-        if (formId == btnId) {
-            form.style.display = "block";
-            form.value = formId == "Name" ? "" : 0;
-        } else {
-            form.style.display = "none";
-        }
-    })
-}
-
-function nameSearch() {
-    const search = document.getElementById("searchName");
-    search.oninput = function(event) {
-        event.preventDefault();
-        
-        fetch("php/search.php?lastName=" + event.target.value)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(jsonResponse => {
-            removeCards();
-            const employees = jsonResponse.data;    
-            for (let i = 0; i < employees.length; i++ ) {
-                createCard(employees[i]);
-            }
-        })
-        .catch(error => {
-            console.error("There has been a problem with your fetch operation:", error);
-        });
-    };
-}
-
-function deptSearch() {
-    const search = document.getElementById("searchDepartment");
-    search.onchange = function(event) {
-        event.preventDefault();
-        
-        fetch("php/search.php?deptID=" + event.target.value)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(jsonResponse => {
-            removeCards();
-            const employees = jsonResponse.data;    
-            for (let i = 0; i < employees.length; i++ ) {
-                createCard(employees[i]);
-            }
-        })
-        .catch(error => {
-            console.error("There has been a problem with your fetch operation:", error);
-        });
-    };
-}
-
-function locationSearch() {
-    const search = document.getElementById("searchLocation");
-    search.onchange = function(event) {
-        event.preventDefault();
-        
-        fetch("php/search.php?location=" + event.target.value)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(jsonResponse => {
-            removeCards();
-            const employees = jsonResponse.data;    
-            for (let i = 0; i < employees.length; i++ ) {
-                createCard(employees[i]);
-            }
-        })
-        .catch(error => {
-            console.error("There has been a problem with your fetch operation:", error);
-        });
-    };
-}
-
