@@ -104,6 +104,7 @@ function updateBtn(id) {
     const updateBtn = document.getElementById("updateBtn");
     updateBtn.style.display = "inline-block";
     updateBtn.onclick = function() {
+        document.getElementById("confirmText").innerText = "update";
         update(id);
     }
 }
@@ -112,6 +113,7 @@ function deleteBtn(id) {
     const deleteBtn = document.getElementById("deleteBtn");
     deleteBtn.style.display = "inline-block";
     deleteBtn.onclick = function() {
+        document.getElementById("confirmText").innerText = "delete";
         deleteEmployee(id);
     }
 }
@@ -120,6 +122,7 @@ function addBtn() {
     const addBtn = document.getElementById("addBtn");
     addBtn.style.display = "inline-block";
     addBtn.onclick = function() {
+        document.getElementById("confirmText").innerText = "add";
         create();
     }
 }
@@ -141,27 +144,28 @@ function clearForm() {
 function showAlert(alertType, code, size) {
     const alert = document.querySelector(".alert");
     alert.style.display = "block";
+    alert.classList.remove("alert");
     
-    alertType == "success" ? alert.classList.add("alert-success") : alert.classList.add("alert-danger");
+    alertType == "success" ? alert.className = "alert alert-success fade show" : alert.className = "alert alert-danger fade show";
 
     switch (code) {
         case 1: 
             alert.innerText = "Employee successfully added.";
             break;
         case 2:
-            alert.innerText = "Unable to add employee to database.";
+            alert.innerText = "Employee not added.";
             break;
         case 3:
             alert.innerText = "Employee successfully updated.";
             break;
         case 4:
-            alert.innerText = "Unable to update employee.";
+            alert.innerText = "Employee not updated.";
             break;
         case 5:
             alert.innerText = "Employee successfully deleted.";
             break;
         case 6:
-            alert.innerText = "Unable to delete employee.";
+            alert.innerText = "Employee not deleted.";
             break;
         case 7:
             alert.innerText = "Unable to access database.";

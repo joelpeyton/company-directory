@@ -14,9 +14,6 @@
         <!-- Font awesome -->
         <link rel="stylesheet" href="../fontawesome/css/all.css">
 
-        <!-- Google Fonts-->
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
-
         <!-- CSS -->
         <link rel="stylesheet" href="css/custom.css">
         
@@ -40,7 +37,7 @@
 
                     <!-- Alert -->
                     <div id="alert" class="col-sm-12">
-                        <div class="alert alert-dismissible fade show" role="alert">
+                        <div class="alert" role="alert">
                         </div>
                     </div>
 
@@ -141,10 +138,25 @@
                             <input type="email" class="form-control" id="employeeEmail" name="email" required>
                         </div>
                         <button type="button" id="cancelBtn" class="btn btn-secondary">Cancel</button>
-                        <button type="submit" id="updateBtn" class="btn btn-primary">Update</button>
-                        <button type="button" id="deleteBtn" class="btn btn-danger">Delete</button>
-                        <button type="submit" id="addBtn" class="btn btn-success">Add</button>
+                        <button type="submit" id="updateBtn" class="btn btn-primary" data-toggle="modal" data-target="#modal">Update</button>
+                        <button type="button" id="deleteBtn" class="btn btn-danger" data-toggle="modal" data-target="#modal">Delete</button>
+                        <button type="submit" id="addBtn" class="btn btn-success" data-toggle="modal" data-target="#modal">Add</button>
                     </form>
+                </div>
+            </div>
+
+            <!-- Confirmation Modal -->
+            <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <i class="fas fa-exclamation-circle mr-2 text-danger"></i>Are you sure you want to <span id="confirmText"></span> this employee?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="noBtn">No</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="yesBtn">Yes</button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div> <!-- End of container-->
